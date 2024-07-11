@@ -1,25 +1,14 @@
-package com.example.clone_Facebook.Entity;
+package com.example.clone_Facebook.DTO;
 
-import jakarta.persistence.*;
-
-import java.util.List;
-
-@Entity(name="tag")
-public class Tag {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class TagDTO {
     private int idTag;
-    @OneToMany(mappedBy = "tag")
-    private List<TagUserGroup> tagUserGroupList;
     private String name;
     private String description;
     private int isDeleted;
-    public Tag() {
-    }
+    public TagDTO() {}
 
-    public Tag(int idTag, List<TagUserGroup> tagUserGroupList, String name, String description, int isDeleted) {
+    public TagDTO(int idTag, String name, String description, int isDeleted) {
         this.idTag = idTag;
-        this.tagUserGroupList = tagUserGroupList;
         this.name = name;
         this.description = description;
         this.isDeleted = isDeleted;
@@ -31,14 +20,6 @@ public class Tag {
 
     public void setIdTag(int idTag) {
         this.idTag = idTag;
-    }
-
-    public List<TagUserGroup> getTagUserGroupList() {
-        return tagUserGroupList;
-    }
-
-    public void setTagUserGroupList(List<TagUserGroup> tagUserGroupList) {
-        this.tagUserGroupList = tagUserGroupList;
     }
 
     public String getName() {

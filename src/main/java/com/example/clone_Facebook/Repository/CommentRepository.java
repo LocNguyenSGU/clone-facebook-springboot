@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
-    public List<Comment> findByPost_idPost(int idPost);
+    public List<Comment> findCommentsByPost_idPost(int idPost);
 }

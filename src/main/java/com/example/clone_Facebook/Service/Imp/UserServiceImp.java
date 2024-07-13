@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface UserServiceImp {
     public List<UserDTO> getAllUser();
+    public UserDTO getFriendsUserByIdUser(int idUser);
 }

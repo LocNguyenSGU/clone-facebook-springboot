@@ -2,6 +2,7 @@ package com.example.clone_Facebook.DTO;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 public class UserDTO {
     private int idUser;
@@ -18,9 +19,10 @@ public class UserDTO {
     private int status;
     private Timestamp updateAt;
     private int idMode;
+    private List<FriendshipDTO> friendshipDTOList;
     public UserDTO() {}
 
-    public UserDTO(int idUser, String avatar, String coverImage, Timestamp createAt, Date dayOfBirth, String email, String firstName, String lastName, int numberFriend, String password, String phone, int status, Timestamp updateAt, int idMode) {
+    public UserDTO(int idUser, String avatar, String coverImage, Timestamp createAt, Date dayOfBirth, String email, String firstName, String lastName, int numberFriend, String password, String phone, int status, Timestamp updateAt, int idMode, List<FriendshipDTO> friendshipDTOList) {
         this.idUser = idUser;
         this.avatar = avatar;
         this.coverImage = coverImage;
@@ -35,6 +37,7 @@ public class UserDTO {
         this.status = status;
         this.updateAt = updateAt;
         this.idMode = idMode;
+        this.friendshipDTOList = friendshipDTOList;
     }
 
     public int getIdUser() {
@@ -147,5 +150,13 @@ public class UserDTO {
 
     public void setIdMode(int idMode) {
         this.idMode = idMode;
+    }
+
+    public List<FriendshipDTO> getFriendshipDTO() {
+        return friendshipDTOList;
+    }
+
+    public void setFriendshipDTO(List<FriendshipDTO> friendshipDTOList) {
+        this.friendshipDTOList = friendshipDTOList;
     }
 }

@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     public List<User> findAll();
+    public User findFriendsUserByIdUser(int idUser);
 }

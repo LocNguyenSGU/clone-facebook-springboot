@@ -15,7 +15,7 @@ public class CommentService implements CommentServiceImp {
     private CommentRepository commentRepository;
     @Override
     public List<CommentDTO> getCommentsByIdPost(int idPost) {
-        List<Comment> commentList = commentRepository.findByPost_idPost(idPost);
+        List<Comment> commentList = commentRepository.findCommentsByPost_idPost(idPost);
         List<CommentDTO> commentDTOList = new ArrayList<>();
         for(Comment comment : commentList) {
             CommentDTO commentDTO = new CommentDTO();

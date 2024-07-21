@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PostServiceImp {
     public List<PostDTO> getAllPost();
+    public List<PostDTO> findByIsDeletedAndMode_idMode(int isDeleted, int idMode);
 }

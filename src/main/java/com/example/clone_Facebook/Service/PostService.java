@@ -32,6 +32,32 @@ public class PostService implements PostServiceImp {
             postDTO.setStatus(post.getStatus());
             postDTO.setUpdatedAt(post.getUpdateAt());
             postDTO.setIsDeleted(post.getIsDeleted());
+            postDTO.setIdMode(post.getMode().getIdMode());
+            final List<UserPostDTO> userPostDTOList = getUserPostDTOList(post);
+            final List<EmotionPostDTO> emotionPostDTOList = getEmotionDTOList(post);
+            postDTO.setUserPostDTOList(userPostDTOList);
+            postDTO.setEmotionPostDTOList(emotionPostDTOList);
+            postDTOList.add(postDTO);
+        }
+        return postDTOList;
+    }
+
+    @Override
+    public List<PostDTO> findByIsDeletedAndMode_idMode(int isDeleted, int idMode) {
+        List<Post> postList = postRepository.findByIsDeletedAndMode_idMode(isDeleted, idMode);
+        List<PostDTO> postDTOList = new ArrayList<>();
+        for(Post post : postList) {
+            PostDTO postDTO = new PostDTO();
+            postDTO.setIdPost(post.getIdPost());
+            postDTO.setContent(post.getContent());
+            postDTO.setCreatedAt(post.getCreateAt());
+            postDTO.setNumberComment(post.getNumberComment());
+            postDTO.setNumberEmotion(post.getNumberEmotion());
+            postDTO.setNumberShare(post.getNumberShare());
+            postDTO.setStatus(post.getStatus());
+            postDTO.setUpdatedAt(post.getUpdateAt());
+            postDTO.setIsDeleted(post.getIsDeleted());
+            postDTO.setIdMode(post.getMode().getIdMode());
             final List<UserPostDTO> userPostDTOList = getUserPostDTOList(post);
             final List<EmotionPostDTO> emotionPostDTOList = getEmotionDTOList(post);
             postDTO.setUserPostDTOList(userPostDTOList);

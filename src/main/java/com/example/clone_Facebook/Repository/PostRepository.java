@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
     public List<Post> findAll();
+    public List<Post> findByIsDeletedAndMode_idMode(int isDeleted, int idMode);
+
 }

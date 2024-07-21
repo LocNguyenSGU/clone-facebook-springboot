@@ -16,9 +16,11 @@ public class PostDTO {
     private int isDeleted;
     private List<UserPostDTO> userPostDTOList;
     private List<EmotionPostDTO> emotionPostDTOList;
+    private int idMode;
     public PostDTO() {}
 
-    public PostDTO(int idPost, String content, Timestamp createdAt, int numberComment, int numberEmotion, int numberShare, int status, Timestamp updatedAt, List<UserPostDTO> userPostDTOList, List<EmotionPostDTO> emotionPostDTOList,int isDeleted) {
+    public PostDTO(int idPost, String content, Timestamp createdAt, int numberComment, int numberEmotion, int numberShare, int status, Timestamp updatedAt, List<UserPostDTO> userPostDTOList, List<EmotionPostDTO> emotionPostDTOList,int isDeleted
+    , int idMode) {
         this.idPost = idPost;
         this.content = content;
         this.createdAt = createdAt;
@@ -30,6 +32,7 @@ public class PostDTO {
         this.isDeleted = isDeleted;
         this.userPostDTOList = userPostDTOList;
         this.emotionPostDTOList = emotionPostDTOList;
+        this.idMode = idMode;
     }
 
     public int getIdPost() {
@@ -118,5 +121,13 @@ public class PostDTO {
 
     public void setEmotionPostDTOList(List<EmotionPostDTO> emotionPostDTOList) {
         this.emotionPostDTOList = emotionPostDTOList;
+    }
+
+    public int getIdMode() {
+        return idMode;
+    }
+
+    public void setIdMode(int idMode) {
+        this.idMode = idMode;
     }
 }

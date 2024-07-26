@@ -1,32 +1,29 @@
-package com.example.clone_Facebook.Entity;
+package com.example.clone_Facebook.DTO;
 
+import com.example.clone_Facebook.Entity.User;
+import com.example.clone_Facebook.Entity.UserGroup;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 
-@Entity(name="memberUserGroup")
-public class MemberUserGroup {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class MemberUserGroupDTO {
+
     private int idMemberUserGroup;
-    @ManyToOne
-    @JoinColumn(name = "idUser")
-    private User user;
-    @ManyToOne
-    @JoinColumn(name = "idUserGroup")
-    private UserGroup userGroup;
+    private int idUser;
+    private int idUserGroup;
     private String role;
     private Timestamp joinedAt;
     private String status;
     private int isDeleted;
-    public MemberUserGroup() {
+
+    public MemberUserGroupDTO() {
 
     }
 
-    public MemberUserGroup(int idMemberUserGroup, User user, UserGroup userGroup, String role, Timestamp joinedAt, String status, int isDeleted) {
+    public MemberUserGroupDTO(int idMemberUserGroup, int idUser, int idUserGroup, String role, Timestamp joinedAt, String status, int isDeleted) {
         this.idMemberUserGroup = idMemberUserGroup;
-        this.user = user;
-        this.userGroup = userGroup;
+        this.idUser = idUser;
+        this.idUserGroup = idUserGroup;
         this.role = role;
         this.joinedAt = joinedAt;
         this.status = status;
@@ -41,20 +38,20 @@ public class MemberUserGroup {
         this.idMemberUserGroup = idMemberUserGroup;
     }
 
-    public User getUser() {
-        return user;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public UserGroup getUserGroup() {
-        return userGroup;
+    public int getIdUserGroup() {
+        return idUserGroup;
     }
 
-    public void setUserGroup(UserGroup userGroup) {
-        this.userGroup = userGroup;
+    public void setIdUserGroup(int idUserGroup) {
+        this.idUserGroup = idUserGroup;
     }
 
     public String getRole() {

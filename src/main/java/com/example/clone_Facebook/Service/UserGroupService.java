@@ -51,7 +51,7 @@ public class UserGroupService implements UserGroupServiceImp {
         memberUserGroupDTO.setStatus(memberUserGroup.getStatus());
         memberUserGroupDTO.setJoinedAt(memberUserGroup.getJoinedAt());
         memberUserGroupDTO.setIsDeleted(memberUserGroup.getIsDeleted());
-//        memberUserGroupDTO.setIdUserGroup(memberUserGroup.getUserGroup().getIdUserGroup());
+        memberUserGroupDTO.setIdUserGroup(memberUserGroup.getUserGroup().getIdUserGroup());
         return memberUserGroupDTO;
     }
 }

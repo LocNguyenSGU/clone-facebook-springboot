@@ -18,7 +18,7 @@ import java.util.List;
 public class UserGroupController {
     @Autowired
     private UserGroupServiceImp userGroupServiceImp;
-    @GetMapping("/getall")
+    @GetMapping
     public ResponseEntity<?> getAllUserGroup() {
         ResponseData responseData = new ResponseData();
        List< UserGroupDTO> userGroupDTOList = userGroupServiceImp.getAllUserGroup();

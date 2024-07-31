@@ -17,7 +17,7 @@ import java.util.List;
 public class ModeController {
     @Autowired
     private ModeServiceImp modeServiceImp;
-    @GetMapping("/getall")
+    @GetMapping
     public ResponseEntity<?> getAllMode() {
         ResponseData responseData = new ResponseData();
         List<ModeDTO> modeDTOList = modeServiceImp.getAllMode();

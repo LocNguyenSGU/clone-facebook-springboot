@@ -18,7 +18,7 @@ import java.util.List;
 public class TagController {
     @Autowired
     private TagServiceImp tagServiceImp;
-    @GetMapping("/getall")
+    @GetMapping
     public ResponseEntity<?> getAllTag() {
         ResponseData responseData = new ResponseData();
         List<TagDTO> tagDTOList = tagServiceImp.getAllTag();

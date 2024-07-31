@@ -19,7 +19,7 @@ import java.util.List;
 public class PostController {
     @Autowired
     private PostServiceImp postServiceImp;
-    @GetMapping("/getall")
+    @GetMapping
     public ResponseEntity<?> getAllPost() {
         ResponseData responseData = new ResponseData();
         List<PostDTO> postDTOList = postServiceImp.getAllPost();
@@ -34,7 +34,7 @@ public class PostController {
         }
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
-    @GetMapping("/getall/{isDeleted}/{idMode}")
+    @GetMapping("/{isDeleted}/deleted/{idMode}/mode")
     public ResponseEntity<?> findByIsDeletedAndMode_idMode(@PathVariable int isDeleted, @PathVariable int idMode){
         ResponseData responseData = new ResponseData();
         List<PostDTO> postDTOList = postServiceImp.findByIsDeletedAndMode_idMode(isDeleted, idMode);

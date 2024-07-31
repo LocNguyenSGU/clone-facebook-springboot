@@ -18,8 +18,8 @@ import java.util.List;
 public class EmotionController {
     @Autowired
     private EmotionServiceImp emotionServiceImp;
-    @GetMapping("/getall")
-    public ResponseEntity<?> getAllMode() {
+    @GetMapping
+    public ResponseEntity<?> getAllEmotion() {
         ResponseData responseData = new ResponseData();
         List<EmotionDTO> emotionDTOList = emotionServiceImp.getAllEmotion();
         if(emotionDTOList.size() > 0) {

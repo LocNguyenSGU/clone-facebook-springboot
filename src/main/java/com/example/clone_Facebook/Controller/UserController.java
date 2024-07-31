@@ -19,7 +19,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserServiceImp userServiceImp;
-    @GetMapping("/getall")
+    @GetMapping
     public ResponseEntity<?> getAllUser() {
         ResponseData responseData = new ResponseData();
         List< UserDTO> userDTOList = userServiceImp.getAllUser();
@@ -34,7 +34,7 @@ public class UserController {
         }
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
-    @GetMapping("/{idUser}/getfriends")
+    @GetMapping("/{idUser}/friends")
     public ResponseEntity<?> getFriendsUserByIdUser(@PathVariable int idUser) {
         ResponseData responseData = new ResponseData();
         UserDTO userDTO = userServiceImp.getFriendsUserByIdUser(idUser);

@@ -54,6 +54,11 @@ public class UserService implements UserServiceImp {
             friendshipDTO.setCreateAt(friendship.getCreateAt());
             friendshipDTOList.add(friendshipDTO);
         }
+        final UserDTO userDTO = getUserDTO(user, friendshipDTOList);
+        return userDTO;
+    }
+
+    private static UserDTO getUserDTO(User user, List<FriendshipDTO> friendshipDTOList) {
         UserDTO userDTO = new UserDTO();
         userDTO.setIdUser(user.getIdUser());
         userDTO.setAvatar(user.getAvatar());

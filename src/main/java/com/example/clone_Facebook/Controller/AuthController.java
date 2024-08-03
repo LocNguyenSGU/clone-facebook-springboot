@@ -2,7 +2,8 @@ package com.example.clone_Facebook.Controller;
 
 import com.example.clone_Facebook.DTO.CommentDTO;
 import com.example.clone_Facebook.Payload.ResponseData;
-import com.example.clone_Facebook.Service.Imp.CommentServiceImp;
+import com.example.clone_Facebook.Security.Jwt.JwtUtils;
+import com.example.clone_Facebook.Service.Imp.LoginServiceImp;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
@@ -10,30 +11,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.crypto.SecretKey;
 import java.util.List;
 
 @Controller
-@RequestMapping("/post")
-public class CommentController {
+@RequestMapping("/auth")
+public class AuthController {
     @Autowired
-    private CommentServiceImp commentServiceImp;
-    @GetMapping("/{idPost}/comments")
-    public ResponseEntity<?> getCommentsByIdPost(@PathVariable int idPost) {
+    private LoginServiceImp loginServiceImp;
+    @Autowired
+    private JwtUtils jwtUtils;
+    @PostMapping("/login")
+    public ResponseEntity<?> login(String email, String password) {
         ResponseData responseData = new ResponseData();
-        List<CommentDTO> commentDTOList = commentServiceImp.getCommentsByIdPost(idPost);
-        if(commentDTOList.size() > 0) {
-            responseData.setData(commentDTOList);
-            responseData.setMessage("lay tat ca cac comment theo idPost");
-            responseData.setStatus(200);
-        } else {
+        if(loginServiceImp.checkLogin(email, password)) {
+            responseData.setMessage("login success");
+            responseData.setData(jwtUtils.generateToken(email));
+        }else {
+            responseData.setMessage("login failed");
             responseData.setData("");
-            responseData.setMessage("lay tat ca cac comment theo idPost khong duoc, hoac khong co comments de lay");
-            responseData.setStatus(400);
         }
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }

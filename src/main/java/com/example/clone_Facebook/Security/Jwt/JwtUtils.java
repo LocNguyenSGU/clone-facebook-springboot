@@ -11,14 +11,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.crypto.SecretKey;
+import java.util.Date;
+
 @Configuration
 public class JwtUtils {
     @Autowired
     @Value("${jwt.secretKey}")
     private String secretKey;
+    private int jwtExpirationMs = 86400000; // Thời gian hết hạn token (1 ngày)
     public String generateToken(String data) {
         SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
-        String jws = Jwts.builder().setSubject(data).signWith(key).compact();
+        String jws = Jwts.builder()
+                .setSubject(data)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs)) // Thời gian hết hạn
+                .signWith(key)
+                .compact();
         return jws;
     }
     public boolean verifyToken(String token) {

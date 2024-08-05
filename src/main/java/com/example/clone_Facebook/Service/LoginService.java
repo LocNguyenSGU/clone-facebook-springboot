@@ -17,6 +17,9 @@ public class LoginService implements LoginServiceImp {
     @Override
     public boolean checkLogin(String email, String password) {
         User user = userRepository.findByEmail(email);
+        if(user == null) {
+            return false;
+        }
         return passwordEncoder.matches(password, user.getPassword());
     }
 

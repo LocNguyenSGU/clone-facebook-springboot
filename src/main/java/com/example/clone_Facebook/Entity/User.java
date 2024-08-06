@@ -29,8 +29,8 @@ public class User {
     private String lastName;
     @Column(name="phone")
     private String phone;
-    @Column(name="sex")
-    private String sex;
+    @Column(name="gender")
+    private String gender;
     @Column(name="email")
 
     private String email;
@@ -63,7 +63,7 @@ public class User {
 
     public User() {}
 
-    public User(int idUser, Mode mode, List<Comment> commentList, List<Friendship> friendshipList, List<UserPost> userPostList, List<MemberUserGroup> memberUserGroupList, String firstName, String lastName, String phone, String email, String password, Date dayOfBirth, String avatar, String coverImage, int numberFriend, Timestamp createAt, Timestamp updateAt, int status, String sex, String role) {
+    public User(int idUser, Mode mode, List<Comment> commentList, List<Friendship> friendshipList, List<UserPost> userPostList, List<MemberUserGroup> memberUserGroupList, String firstName, String lastName, String phone, String email, String password, Date dayOfBirth, String avatar, String coverImage, int numberFriend, Timestamp createAt, Timestamp updateAt, int status, String gender, String role) {
         this.idUser = idUser;
         this.mode = mode;
         this.commentList = commentList;
@@ -82,16 +82,16 @@ public class User {
         this.createAt = createAt;
         this.updateAt = updateAt;
         this.status = status;
-        this.sex=sex;
+        this.gender=gender;
         this.role = role;
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getRole() {

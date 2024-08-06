@@ -12,6 +12,7 @@ import com.example.clone_Facebook.Service.Imp.UserServiceImp;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +47,7 @@ public class AuthController {
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
     @PostMapping("/signup")
-    public ResponseEntity<?> signup(@RequestBody SignupDTO signupDTO) {
+    public ResponseEntity<?> signup(@Valid @RequestBody SignupDTO signupDTO) {
         ResponseData responseData = new ResponseData();
         try {
             if(userServiceImp.findUserByEmail(signupDTO.getEmail())) {

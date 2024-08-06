@@ -74,7 +74,7 @@ public class UserService implements UserServiceImp {
             user.setEmail(signupDTO.getEmail());
             user.setFirstName(signupDTO.getFirstName());
             user.setLastName(signupDTO.getLastName());
-            user.setSex(signupDTO.getSex());
+            user.setGender(signupDTO.getGender());
             user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
             user.setRole("user");
             user.setCreateAt(Timestamp.valueOf(LocalDateTime.now()));
@@ -86,7 +86,7 @@ public class UserService implements UserServiceImp {
 
             userDTO.setEmail(user.getEmail());
             userDTO.setPassword(user.getPassword());
-            userDTO.setSex(user.getSex());
+            userDTO.setGender(user.getGender());
             userDTO.setFirstName(user.getFirstName());
             userDTO.setLastName(user.getLastName());
             userDTO.setRole(user.getRole());

@@ -16,13 +16,15 @@ public class UserDTO {
     private int numberFriend;
     private String password;
     private String phone;
+    private String sex;
     private int status;
     private Timestamp updateAt;
     private int idMode;
+    private String role;
     private List<FriendshipDTO> friendshipDTOList;
     public UserDTO() {}
 
-    public UserDTO(int idUser, String avatar, String coverImage, Timestamp createAt, Date dayOfBirth, String email, String firstName, String lastName, int numberFriend, String password, String phone, int status, Timestamp updateAt, int idMode, List<FriendshipDTO> friendshipDTOList) {
+    public UserDTO(int idUser, String avatar, String coverImage, Timestamp createAt, Date dayOfBirth, String email, String firstName, String lastName, int numberFriend, String password, String phone, String sex, int status, Timestamp updateAt, int idMode, String role, List<FriendshipDTO> friendshipDTOList) {
         this.idUser = idUser;
         this.avatar = avatar;
         this.coverImage = coverImage;
@@ -34,9 +36,35 @@ public class UserDTO {
         this.numberFriend = numberFriend;
         this.password = password;
         this.phone = phone;
+        this.sex = sex;
         this.status = status;
         this.updateAt = updateAt;
         this.idMode = idMode;
+        this.role = role;
+        this.friendshipDTOList = friendshipDTOList;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public List<FriendshipDTO> getFriendshipDTOList() {
+        return friendshipDTOList;
+    }
+
+    public void setFriendshipDTOList(List<FriendshipDTO> friendshipDTOList) {
         this.friendshipDTOList = friendshipDTOList;
     }
 

@@ -23,14 +23,14 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<MemberUserGroup> memberUserGroupList;
 //    @OneToMany(mappedBy = "user")
-
-
     @Column(name="firstName")
     private String firstName;
     @Column(name="lastName")
     private String lastName;
     @Column(name="phone")
     private String phone;
+    @Column(name="sex")
+    private String sex;
     @Column(name="email")
 
     private String email;
@@ -58,10 +58,12 @@ public class User {
     @Column(name="status")
 
     private int status;
+    @Column(name="role")
+    private String role;
 
     public User() {}
 
-    public User(int idUser, Mode mode, List<Comment> commentList, List<Friendship> friendshipList, List<UserPost> userPostList, List<MemberUserGroup> memberUserGroupList, String firstName, String lastName, String phone, String email, String password, Date dayOfBirth, String avatar, String coverImage, int numberFriend, Timestamp createAt, Timestamp updateAt, int status) {
+    public User(int idUser, Mode mode, List<Comment> commentList, List<Friendship> friendshipList, List<UserPost> userPostList, List<MemberUserGroup> memberUserGroupList, String firstName, String lastName, String phone, String email, String password, Date dayOfBirth, String avatar, String coverImage, int numberFriend, Timestamp createAt, Timestamp updateAt, int status, String sex, String role) {
         this.idUser = idUser;
         this.mode = mode;
         this.commentList = commentList;
@@ -80,6 +82,24 @@ public class User {
         this.createAt = createAt;
         this.updateAt = updateAt;
         this.status = status;
+        this.sex=sex;
+        this.role = role;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getIdUser() {

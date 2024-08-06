@@ -1,20 +1,28 @@
 package com.example.clone_Facebook.Service;
 
 import com.example.clone_Facebook.DTO.FriendshipDTO;
+import com.example.clone_Facebook.DTO.SignupDTO;
 import com.example.clone_Facebook.DTO.UserDTO;
 import com.example.clone_Facebook.Entity.Friendship;
+import com.example.clone_Facebook.Entity.Mode;
 import com.example.clone_Facebook.Entity.User;
 import com.example.clone_Facebook.Repository.UserRepository;
 import com.example.clone_Facebook.Service.Imp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 @Service
 public class UserService implements UserServiceImp {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public List<UserDTO> getAllUser() {
         List<User> userList = userRepository.findAll();
@@ -57,6 +65,53 @@ public class UserService implements UserServiceImp {
         final UserDTO userDTO = getUserDTO(user, friendshipDTOList);
         return userDTO;
     }
+
+    @Override
+    public UserDTO saveUser(SignupDTO signupDTO) {
+        UserDTO userDTO = new UserDTO();
+        try {
+            User user = new User();
+            user.setEmail(signupDTO.getEmail());
+            user.setFirstName(signupDTO.getFirstName());
+            user.setLastName(signupDTO.getLastName());
+            user.setSex(signupDTO.getSex());
+            user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
+            user.setRole("user");
+            user.setCreateAt(Timestamp.valueOf(LocalDateTime.now()));
+            user.setUpdateAt(Timestamp.valueOf(LocalDateTime.now()));
+            Mode mode = new Mode();
+            mode.setIdMode(1);
+            user.setMode(mode);
+            userRepository.save(user);
+
+            userDTO.setEmail(user.getEmail());
+            userDTO.setPassword(user.getPassword());
+            userDTO.setSex(user.getSex());
+            userDTO.setFirstName(user.getFirstName());
+            userDTO.setLastName(user.getLastName());
+            userDTO.setRole(user.getRole());
+            userDTO.setCreateAt(user.getCreateAt());
+            userDTO.setUpdateAt(user.getUpdateAt());
+            userDTO.setIdMode(user.getMode().getIdMode());
+        } catch (Exception e) {
+            // Log the error
+            e.printStackTrace();
+
+            // Return null or an appropriate response indicating failure
+            return null;
+        }
+        return userDTO;
+    }
+
+    @Override
+    public boolean findUserByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        if(user == null) {
+            return false;
+        }
+        return true;
+    }
+
 
     private static UserDTO getUserDTO(User user, List<FriendshipDTO> friendshipDTOList) {
         UserDTO userDTO = new UserDTO();

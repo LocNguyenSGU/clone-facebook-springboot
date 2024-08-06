@@ -22,7 +22,6 @@ public class CustomJwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = getTokenFromHeader(request);
         if(jwtUtils.verifyToken(token)){
-            System.out.println("Da check thanh cong");
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                     "", "", new ArrayList<>());
             usernamePasswordAuthenticationToken

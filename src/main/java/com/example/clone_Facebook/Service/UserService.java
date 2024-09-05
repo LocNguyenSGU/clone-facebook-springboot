@@ -112,6 +112,27 @@ public class UserService implements UserServiceImp {
         return true;
     }
 
+    @Override
+    public UserDTO findUserByEmail_Instant(String email) {
+        UserDTO userDTO = new UserDTO();
+        User user = userRepository.findByEmail(email);
+        userDTO.setIdUser(user.getIdUser());
+        userDTO.setAvatar(user.getAvatar());
+        userDTO.setCoverImage(user.getCoverImage());
+        userDTO.setCreateAt(user.getCreateAt());
+        userDTO.setDayOfBirth(user.getDayOfBirth());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setFirstName(user.getFirstName());
+        userDTO.setLastName(user.getLastName());
+        userDTO.setNumberFriend(user.getNumberFriend());
+//        userDTO.setPassword(user.getPassword());
+        userDTO.setPhone(user.getPhone());
+        userDTO.setStatus(user.getStatus());
+        userDTO.setUpdateAt(user.getUpdateAt());
+        userDTO.setIdMode(user.getMode().getIdMode());
+        return userDTO;
+    }
+
 
     private static UserDTO getUserDTO(User user, List<FriendshipDTO> friendshipDTOList) {
         UserDTO userDTO = new UserDTO();
@@ -124,12 +145,13 @@ public class UserService implements UserServiceImp {
         userDTO.setFirstName(user.getFirstName());
         userDTO.setLastName(user.getLastName());
         userDTO.setNumberFriend(user.getNumberFriend());
-        userDTO.setPassword(user.getPassword());
+//        userDTO.setPassword(user.getPassword());
         userDTO.setPhone(user.getPhone());
         userDTO.setStatus(user.getStatus());
         userDTO.setUpdateAt(user.getUpdateAt());
         userDTO.setIdMode(user.getMode().getIdMode());
-        userDTO.setFriendshipDTO(friendshipDTOList);
+        userDTO.setFriendshipDTOList(friendshipDTOList);
         return userDTO;
     }
+
 }

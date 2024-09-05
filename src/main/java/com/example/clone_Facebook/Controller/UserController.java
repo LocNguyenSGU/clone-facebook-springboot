@@ -4,6 +4,7 @@ import com.example.clone_Facebook.DTO.TagDTO;
 import com.example.clone_Facebook.DTO.UserDTO;
 import com.example.clone_Facebook.Payload.ResponseData;
 import com.example.clone_Facebook.Service.Imp.UserServiceImp;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,4 +50,5 @@ public class UserController {
         }
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
+
 }

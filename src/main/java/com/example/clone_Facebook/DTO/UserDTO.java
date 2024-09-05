@@ -22,7 +22,9 @@ public class UserDTO {
     private int idMode;
     private String role;
     private List<FriendshipDTO> friendshipDTOList;
-    public UserDTO() {}
+
+    public UserDTO() {
+    }
 
     public UserDTO(int idUser, String avatar, String coverImage, Timestamp createAt, Date dayOfBirth, String email, String firstName, String lastName, int numberFriend, String password, String phone, String gender, int status, Timestamp updateAt, int idMode, String role, List<FriendshipDTO> friendshipDTOList) {
         this.idUser = idUser;
@@ -41,30 +43,6 @@ public class UserDTO {
         this.updateAt = updateAt;
         this.idMode = idMode;
         this.role = role;
-        this.friendshipDTOList = friendshipDTOList;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public List<FriendshipDTO> getFriendshipDTOList() {
-        return friendshipDTOList;
-    }
-
-    public void setFriendshipDTOList(List<FriendshipDTO> friendshipDTOList) {
         this.friendshipDTOList = friendshipDTOList;
     }
 
@@ -156,6 +134,14 @@ public class UserDTO {
         this.phone = phone;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public int getStatus() {
         return status;
     }
@@ -180,11 +166,19 @@ public class UserDTO {
         this.idMode = idMode;
     }
 
-    public List<FriendshipDTO> getFriendshipDTO() {
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<FriendshipDTO> getFriendshipDTOList() {
         return friendshipDTOList;
     }
 
-    public void setFriendshipDTO(List<FriendshipDTO> friendshipDTOList) {
+    public void setFriendshipDTOList(List<FriendshipDTO> friendshipDTOList) {
         this.friendshipDTOList = friendshipDTOList;
     }
 }

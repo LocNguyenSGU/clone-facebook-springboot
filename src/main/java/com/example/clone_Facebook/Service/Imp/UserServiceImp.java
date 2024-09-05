@@ -10,4 +10,5 @@ public interface UserServiceImp {
     public UserDTO getFriendsUserByIdUser(int idUser);
     public UserDTO saveUser(SignupDTO signupDTO);
     public boolean findUserByEmail(String email);
+    public UserDTO findUserByEmail_Instant(String email);
 }
